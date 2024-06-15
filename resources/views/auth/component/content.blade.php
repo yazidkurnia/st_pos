@@ -69,16 +69,17 @@
             <h4 class="mb-2">Welcome to Sneat! 👋</h4>
             <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-            <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+            <form method="POST" action="{{ route('login') }}">
+              @csrf
               <div class="mb-3">
                 <label for="email" class="form-label">Email or Username</label>
                 <input
-                  type="text"
+                  {{-- type="text" --}}
                   class="form-control"
                   id="email"
-                  name="email-username"
+                  type="email" name="email" :value="old('email')" required autofocus
                   placeholder="Enter your email or username"
-                  autofocus
+                  {{-- autofocus --}}
                 />
               </div>
               <div class="mb-3 form-password-toggle">
@@ -90,6 +91,10 @@
                 </div>
                 <div class="input-group input-group-merge">
                   <input
+                  {{-- id="password" --}}
+                  {{-- type="password"
+                                name="password"
+                                required autocomplete="current-password" --}}
                     type="password"
                     id="password"
                     class="form-control"
