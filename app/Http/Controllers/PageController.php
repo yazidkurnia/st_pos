@@ -15,7 +15,10 @@ class PageController extends Controller
      */
     public function indexsupplier()
     {
-        return "masuk";
+        $vendors = Vendor::select('*')->get();
+        return view('layouts.supplier.supplier_data', [
+            'vendors' => $vendors
+        ]);
     }
 
     /**
