@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('layouts.kasir.index');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->group(function(){
+    Route::get('/dashboard', function() { return view('layouts.kasir.index'); })->name('dashboard');
+    Route::get('/supplier', [PageController::class, 'indexsupplier'])->name('supplier');
+
+});
+
+// Route::get('/dashboard', function () {
+//     return view('layouts.kasir.index');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
