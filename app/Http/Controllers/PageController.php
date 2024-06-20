@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Vendor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
+use Session;
 
 class PageController extends Controller
 {
@@ -37,9 +40,16 @@ class PageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function supplierstore(Request $request)
     {
-        //
+        $vendor = new Vendor();
+        $vendor->nama = $request->nama;
+        $vendor->telp = $request->telp;
+        $vendor->alamat = $request->alamat;
+        $vendor->save();
+
+        Session::flash('sukses', 'Data berhasil disimpan!');
+        return redirect(route('supplier'));
     }
 
     /**
@@ -59,9 +69,14 @@ class PageController extends Controller
      * @param  \App\Models\Vendor  $vendor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vendor $vendor)
+    public function supplieredit(Request $request)
     {
-        //
+        $id = $request->id;
+        $vendor = Vendor::find($id);
+
+        return view('layouts.supplier.supplier_edit', [
+            'vendor' => $vendor
+        ]);
     }
 
     /**
@@ -71,9 +86,16 @@ class PageController extends Controller
      * @param  \App\Models\Vendor  $vendor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vendor $vendor)
+    public function supplierupdate(Request $request, $id)
     {
-        //
+        $vendor = Vendor::find($id);
+        $vendor->nama = $request->nama;
+        $vendor->telp = $request->telp;
+        $vendor->alamat = $request->alamat;
+        $vendor->update();
+
+        Session::flash('sukses', 'Data berhasil diupdate!');
+        return redirect(route('supplier'));
     }
 
     /**
@@ -82,8 +104,12 @@ class PageController extends Controller
      * @param  \App\Models\Vendor  $vendor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vendor $vendor)
+    public function supplierdestroy(Request $request, $id)
     {
-        //
+        $vendor = Vendor::findOrFail($id);
+        $vendor->delete();
+
+        Session::flash('sukses', 'Data berhasil dihapus!');
+        return redirect(route('supplier'));
     }
 }
