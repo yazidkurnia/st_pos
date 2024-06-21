@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vendor;
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
@@ -25,16 +26,6 @@ class PageController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -50,17 +41,6 @@ class PageController extends Controller
 
         Session::flash('sukses', 'Data berhasil disimpan!');
         return redirect(route('supplier'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Vendor  $vendor
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Vendor $vendor)
-    {
-        //
     }
 
     /**
@@ -111,5 +91,30 @@ class PageController extends Controller
 
         Session::flash('sukses', 'Data berhasil dihapus!');
         return redirect(route('supplier'));
+    }
+
+    public function indexcustomer()
+    {
+        $customer = Customer::select('*')->get();
+
+        return view('layouts.customer.customer_data', [
+            'customers' => $customer
+        ]);
+    }
+
+    public function customerstore(Request $request)
+    {
+        $customer = new Customer();
+        $customer->nik = $request->nik;
+        $customer->name = $request->nama;
+        $customer->gender = $request->gender;
+        $customer->dob = $request->dob;
+        $customer->do_join = $request->do_join;
+        $customer->phone = $request->phone;
+        $customer->address = $request->address;
+        $customer->save();
+
+        Session::flash('sukses', 'Data berhasil disimpan!');
+        return redirect(route('customer'));
     }
 }
