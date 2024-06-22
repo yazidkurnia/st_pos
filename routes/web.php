@@ -31,6 +31,8 @@ Route::middleware(['auth'])->group(function(){
     // customer page
     Route::get('customer', [PageController::class, 'indexcustomer'])->name('customer');
     Route::post('customerstore', [PageController::class, 'customerstore'])->name('customer.store');
+    Route::put('customerupdate/{id}', [PageController::class, 'customerupdate'])->name('customer.update');
+    Route::delete('customerdestroy/{id}', [PageController::class, 'customerdestroy'])->name('customer.destroy');
 });
 
 // Route::get('/dashboard', function () {

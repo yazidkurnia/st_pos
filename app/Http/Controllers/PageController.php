@@ -117,4 +117,29 @@ class PageController extends Controller
         Session::flash('sukses', 'Data berhasil disimpan!');
         return redirect(route('customer'));
     }
+
+    public function customerupdate(Request $request, $id)
+    {
+        $customer = Customer::find($id);
+        $customer->nik = $request->nik;
+        $customer->name = $request->nama;
+        $customer->gender = $request->gender;
+        $customer->dob = $request->dob;
+        $customer->do_join = $request->do_join;
+        $customer->phone = $request->phone;
+        $customer->address = $request->address;
+        $customer->update();
+
+        Session::flash('sukses', 'Data berhasil diupdate!');
+        return redirect(route('customer'));
+    }
+
+    public function customerdestroy(Request $request, $id)
+    {
+        $customer = Customer::findOrFail($id);
+        $customer->delete();
+
+        Session::flash('sukses', 'Data berhasil dihapus!');
+        return redirect(route('customer'));
+    }
 }

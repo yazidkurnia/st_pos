@@ -54,7 +54,6 @@
                                             <td>{{ $customer->phone }}</td>
                                             <td>{{ $customer->address }}</td>
                                             <td>
-                                                {{-- <a href="{{ route('supplier.edit', $customer->id ) }}" class="btn rounded-pill btn-icon btn-primary"><i class="tf-icons bx bx-edit"></i></a> --}}
                                                 <button type="button" class="btn rounded-pill btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $customer->id }}">
                                                     <i class='tf-icons bx bx-edit'></i>
                                                 </button>
@@ -138,8 +137,9 @@
                         <h5 class="modal-title" id="modalCenterTitle">Edit Data Customers</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="" method="post">
+                    <form action="{{ route('customer.update', $customer->id) }}" method="post">
                         @csrf
+                        @method('put')
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label class="form-label">NIK</label>
@@ -153,8 +153,8 @@
                                 <label class="form-label">Gender</label>
                                 <select name="gender" class="form-control">
                                     <option value="">- Pilih -</option>
-                                    <option value="L" <?= $customer->gender == 'L' ? 'selected' : '' ?>>Laki-laki</option>
-                                    <option value="P" <?= $customer->gender == 'P' ? 'selected' : '' ?>>Perempuan</option>
+                                    <option value="L" {{ $customer->gender == 'L' ? 'selected' : '' }}>Laki-laki</option>
+                                    <option value="P" {{ $customer->gender == 'P' ? 'selected' : '' }}>Perempuan</option>
                                 </select>
                             </div>
                             <div class="mb-3">
@@ -186,4 +186,33 @@
         </div>
     @endforeach
     {{-- end modal edit --}}
+
+    {{-- modal hapus --}}
+    @foreach ($customers as $customer)
+        <div class="modal fade" id="delModal{{ $customer->id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCenterTitle">Hapus Data Customer</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{ route('customer.destroy', $customer->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <div class="modal-body">
+                            <input name="id" type="hidden" value="{{ $customer->id }}">
+                            <p>Apakah kamu yakin akan menghapus data customer <b>{{ $customer->name }}</b>?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                Tutup
+                            </button>
+                            <button type="submit" name="save" class="btn btn-danger">Yakin</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
+    {{-- end modal hapus --}}
 @endsection
