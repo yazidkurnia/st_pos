@@ -85,15 +85,15 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label">NIK</label>
-                            <input name="nik" type="number" min="0" class="form-control" placeholder="Input NIK" />
+                            <input name="nik" type="number" min="0" class="form-control" placeholder="Input NIK" required />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Nama</label>
-                            <input name="nama" type="text" class="form-control" placeholder="Input Nama" />
+                            <input name="nama" type="text" class="form-control" placeholder="Input Nama" required />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Gender</label>
-                            <select name="gender" class="form-control">
+                            <select name="gender" class="form-control" required>
                                 <option value="">- Pilih -</option>
                                 <option value="L">Laki-laki</option>
                                 <option value="P">Perempuan</option>
@@ -101,15 +101,15 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Tanggal Lahir</label>
-                            <input name="dob" type="date" class="form-control" placeholder="Input tanggal lahir" />
+                            <input name="dob" type="date" class="form-control" placeholder="Input tanggal lahir" required />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Tanggal Bergabung</label>
-                            <input name="do_join" type="date" class="form-control" placeholder="Input Tanggal Bergabung" />
+                            <input name="do_join" type="date" class="form-control" placeholder="Input Tanggal Bergabung" required />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Telp</label>
-                            <input name="phone" type="number" min="0" class="form-control" placeholder="Input Telp" />
+                            <input name="phone" type="number" min="0" class="form-control" placeholder="Input Telp" required />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Address</label>
@@ -147,11 +147,11 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
-                                <input name="nama" type="text" class="form-control" value="{{ $customer->name }}" placeholder="Input Nama" />
+                                <input name="nama" type="text" class="form-control" value="{{ $customer->name }}" placeholder="Input Nama" required />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Gender</label>
-                                <select name="gender" class="form-control">
+                                <select name="gender" class="form-control" required>
                                     <option value="">- Pilih -</option>
                                     <option value="L" {{ $customer->gender == 'L' ? 'selected' : '' }}>Laki-laki</option>
                                     <option value="P" {{ $customer->gender == 'P' ? 'selected' : '' }}>Perempuan</option>
@@ -159,15 +159,15 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Tanggal Lahir</label>
-                                <input name="dob" type="date" class="form-control" value="{{ $customer->dob }}" placeholder="Input tanggal lahir" />
+                                <input name="dob" type="date" class="form-control" value="{{ $customer->dob }}" placeholder="Input tanggal lahir" required />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Tanggal Bergabung</label>
-                                <input name="do_join" type="date" class="form-control" value="{{ $customer->do_join }}" placeholder="Input Tanggal Bergabung" />
+                                <input name="do_join" type="date" class="form-control" value="{{ $customer->do_join }}" placeholder="Input Tanggal Bergabung" required />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Telp</label>
-                                <input name="phone" type="number" min="0" value="{{ $customer->phone }}" class="form-control" placeholder="Input Telp" />
+                                <input name="phone" type="number" min="0" value="{{ $customer->phone }}" class="form-control" placeholder="Input Telp" required />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Address</label>

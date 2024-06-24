@@ -69,7 +69,7 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label">Nama</label>
-                            <input name="nama" type="text" class="form-control" placeholder="Input Nama" />
+                            <input name="nama" type="text" class="form-control" placeholder="Input Nama" required />
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -99,7 +99,7 @@
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
-                                <input name="nama" type="text" class="form-control" value="{{ $category->nama }}" placeholder="Input Nama" />
+                                <input name="nama" type="text" class="form-control" value="{{ $category->nama }}" placeholder="Input Nama" required />
                             </div>
                         </div>
                         <div class="modal-footer">

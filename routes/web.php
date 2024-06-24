@@ -45,6 +45,11 @@ Route::middleware(['auth'])->group(function(){
     Route::post('unitsstore', [PageController::class, 'unitsstore'])->name('units.store');
     Route::put('unitsupdate/{id}', [PageController::class, 'unitsupdate'])->name('units.update');
     Route::delete('unitsdestroy/{id}', [PageController::class, 'unitsdestroy'])->name('units.destroy');
+
+    // items page
+    Route::get('items', [PageController::class, 'indexitems'])->name('items');
+    Route::get('itemscreate', [PageController::class, 'itemscreate'])->name('items.create');
+    Route::delete('itemsdestroy/{id}', [PageController::class, 'itemsdestroy'])->name('items.destroy');
 });
 
 // Route::get('/dashboard', function () {

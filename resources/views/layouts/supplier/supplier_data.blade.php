@@ -73,12 +73,12 @@
                     <div class="modal-body">
                         <div class="form-floating mb-3">
                             <input type="text" name="nama" class="form-control" id="floatingInput" placeholder="Input nama suplier"
-                                aria-describedby="floatingInputHelp" />
+                                aria-describedby="floatingInputHelp" required />
                             <label for="floatingInput">Nama</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="number" name="telp" class="form-control" id="floatingInput" placeholder="Input telp suplier"
-                                aria-describedby="floatingInputHelp" />
+                                aria-describedby="floatingInputHelp" required />
                             <label for="floatingInput">Telp</label>
                         </div>
                         <div class="form-floating mb-3">

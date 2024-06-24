@@ -6,6 +6,7 @@ use App\Models\Vendor;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use App\Models\Customer;
+use App\Models\Items;
 use App\Models\Units;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -220,5 +221,33 @@ class PageController extends Controller
 
         Session::flash('sukses', 'Data berhasil dihapus!');
         return redirect(route('units'));
+    }
+
+    public function indexitems()
+    {
+        $items = Items::select('barang.*', 'kategori.nama as kategori', 'satuan.nama as satuan', 'vendor.nama as vendor')
+                        ->join('kategori', 'kategori.id', '=', 'barang.kategori_id')
+                        ->join('satuan', 'satuan.id', '=', 'barang.satuan_id')
+                        ->join('vendor', 'vendor.id', '=', 'barang.vendor_id')
+                        ->get();
+
+        return view('layouts.products.items_data', [
+            'items' => $items
+        ]);
+    }
+
+    public function itemscreate()
+    {
+        $satuan = Units::all();
+        $vendor = Vendor::all();
+        $kategori = Categories::all();
+
+        return view('layouts.products.items_form', [
+            'satuan' => $satuan,
+            'vendor' => $vendor,
+            'kategori' => $kategori,
+            'items' => 0,
+            'pages' => 'create'
+        ]);
     }
 }

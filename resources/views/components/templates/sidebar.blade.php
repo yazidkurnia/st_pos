@@ -109,7 +109,7 @@
             </a>
           </li>
           <li class="menu-item">
-            <a href="auth-forgot-password-basic.html" class="menu-link">
+            <a href="{{ route('items') }}" class="menu-link">
               <div data-i18n="Basic">Items</div>
             </a>
           </li>

@@ -128,7 +128,7 @@
                         @csrf
                         @method('delete')
                         <div class="modal-body">
-                            <input name="id" type="hidden" value="{{ $unit->id }}">
+                            <input name="id" type="hidden" value="{{ $unit->id }}" required>
                             <p>Apakah kamu yakin akan menghapus data unit <b>{{ $unit->nama }}</b>?</p>
                         </div>
                         <div class="modal-footer">
