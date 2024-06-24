@@ -33,6 +33,18 @@ Route::middleware(['auth'])->group(function(){
     Route::post('customerstore', [PageController::class, 'customerstore'])->name('customer.store');
     Route::put('customerupdate/{id}', [PageController::class, 'customerupdate'])->name('customer.update');
     Route::delete('customerdestroy/{id}', [PageController::class, 'customerdestroy'])->name('customer.destroy');
+
+    // categories page
+    Route::get('categories', [PageController::class, 'indexcategories'])->name('categories');
+    Route::post('categoriesstore', [PageController::class, 'categoriesstore'])->name('categories.store');
+    Route::put('categoriesupdate/{id}', [PageController::class, 'categoriesupdate'])->name('categories.update');
+    Route::delete('categoriesdestroy/{id}', [PageController::class, 'categoriesdestroy'])->name('categories.destroy');
+
+    // units page
+    Route::get('units', [PageController::class, 'indexunits'])->name('units');
+    Route::post('unitsstore', [PageController::class, 'unitsstore'])->name('units.store');
+    Route::put('unitsupdate/{id}', [PageController::class, 'unitsupdate'])->name('units.update');
+    Route::delete('unitsdestroy/{id}', [PageController::class, 'unitsdestroy'])->name('units.destroy');
 });
 
 // Route::get('/dashboard', function () {

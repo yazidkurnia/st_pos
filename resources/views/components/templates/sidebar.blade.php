@@ -99,17 +99,17 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="auth-login-basic.html" class="menu-link" target="_blank">
+            <a href="{{ route('categories') }}" class="menu-link">
               <div data-i18n="Basic">Categories</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="auth-register-basic.html" class="menu-link" target="_blank">
+            <a href="{{ route('units') }}" class="menu-link">
               <div data-i18n="Basic">Units</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">
+            <a href="auth-forgot-password-basic.html" class="menu-link">
               <div data-i18n="Basic">Items</div>
             </a>
           </li>

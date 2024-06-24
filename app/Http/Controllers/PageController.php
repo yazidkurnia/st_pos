@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Vendor;
 use App\Http\Controllers\Controller;
+use App\Models\Categories;
 use App\Models\Customer;
+use App\Models\Units;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
+use SebastianBergmann\CodeCoverage\Report\Xml\Unit;
 use Session;
 
 class PageController extends Controller
@@ -141,5 +144,81 @@ class PageController extends Controller
 
         Session::flash('sukses', 'Data berhasil dihapus!');
         return redirect(route('customer'));
+    }
+
+    public function indexcategories()
+    {
+        $categories = Categories::select('*')->get();
+
+        return view('layouts.products.categories_data', [
+            'categories' => $categories
+        ]);
+    }
+
+    public function categoriesstore(Request $request)
+    {
+        $categories = new Categories();
+        $categories->nama = $request->nama;
+        $categories->save();
+
+        Session::flash('sukses', 'Data berhasil disimpan!');
+        return redirect(route('categories'));
+    }
+
+    public function categoriesupdate(Request $request, $id)
+    {
+        $categories = Categories::find($id);
+        $categories->nama = $request->nama;
+        $categories->update();
+
+        Session::flash('sukses', 'Data berhasil diupdate!');
+        return redirect(route('categories'));
+    }
+
+    public function categoriesdestroy(Request $request, $id)
+    {
+        $categories = Categories::findOrFail($id);
+        $categories->delete();
+
+        Session::flash('sukses', 'Data berhasil dihapus!');
+        return redirect(route('categories'));
+    }
+
+    public function indexunits()
+    {
+        $units = Units::select('*')->get();
+
+        return view('layouts.products.units_data', [
+            'units' => $units
+        ]);
+    }
+
+    public function unitsstore(Request $request)
+    {
+        $units = new Units();
+        $units->nama = $request->nama;
+        $units->save();
+
+        Session::flash('sukses', 'Data berhasil disimpan!');
+        return redirect(route('units'));
+    }
+
+    public function unitsupdate(Request $request, $id)
+    {
+        $units = Units::find($id);
+        $units->nama = $request->nama;
+        $units->update();
+
+        Session::flash('sukses', 'Data berhasil diupdate!');
+        return redirect(route('units'));
+    }
+
+    public function unitsdestroy(Request $request, $id)
+    {
+        $units = Units::findOrFail($id);
+        $units->delete();
+
+        Session::flash('sukses', 'Data berhasil dihapus!');
+        return redirect(route('units'));
     }
 }
