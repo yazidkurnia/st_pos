@@ -1,5 +1,70 @@
 <?php
 
+// Konvensi penamaan fungsi:
+// - Gunakan camelCase untuk nama fungsi
+// - Beri nama yang deskriptif dan singkat
+// - Hindari menggunakan singkatan kecuali jika sudah umum digunakan
+
+// Contoh: nama fungsi yang baik
+// public function calculateTotalPrice() {}
+
+// Contoh: nama fungsi yang tidak baik (gunakan singkatan)
+// public function ctP() {}
+
+// Dokumentasi fungsi:
+// - Gunakan komentar PHPDoc untuk mendokumentasikan fungsi
+// - Sertakan deskripsi singkat tentang fungsi
+// - Sertakan informasi tentang nilai kembali dan parameter apa pun
+
+// Contoh: dokumentasi fungsi yang baik
+/**
+ * Menghitung total harga produk.
+ *
+ * @param float $price Harga produk
+ * @param int $quantity Jumlah produk
+ * @return float Total harga produk
+ */
+// public function calculateTotalPrice(float $price, int $quantity) {
+//     return $price * $quantity;
+// }
+
+// Badan fungsi:
+// - Pastikan badan fungsi singkat dan fokus pada satu tugas
+// - Hindari logika kompleks dan pertimbangkan memecahnya menjadi fungsi yang lebih kecil
+// - Gunakan nama variabel yang bermakna dan pertimbangkan menggunakan type hints
+
+// Contoh: badan fungsi yang baik
+// public function calculateTotalPrice(float $price, int $quantity) {
+//     $totalPrice = $price * $quantity;
+//     return $totalPrice;
+// }
+
+// Contoh: badan fungsi yang tidak baik (logika kompleks)
+// public function calculateTotalPrice(float $price, int $quantity) {
+//     if ($price > 100) {
+//         $discount = 0.1;
+//     } else {
+//         $discount = 0.05;
+//     }
+//     $totalPrice = $price * $quantity * (1 - $discount);
+//     return $totalPrice;
+// }
+
+// Contoh: badan fungsi yang lebih baik (memecah logika kompleks menjadi fungsi yang lebih kecil)
+// public function calculateTotalPrice(float $price, int $quantity) {
+//     $discount = getDiscount($price);
+//     $totalPrice = $price * $quantity * (1 - $discount);
+//     return $totalPrice;
+// }
+
+// public function getDiscount(float $price) {
+//     if ($price > 100) {
+//         return 0.1;
+//     } else {
+//         return 0.05;
+//     }
+// }
+
 namespace App\Http\Controllers;
 
 use App\Models\Vendor;
