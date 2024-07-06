@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\Supplier\SupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,11 +23,12 @@ Route::middleware(['auth'])->group(function(){
     Route::get('dashboard', function() { return view('layouts.kasir.index'); })->name('dashboard');
 
     // supplier page
-    Route::get('supplier', [PageController::class, 'indexsupplier'])->name('supplier');
-    Route::post('supplierstore', [PageController::class, 'supplierstore'])->name('supplier.store');
-    Route::get('supplieredit/{id}', [PageController::class, 'supplieredit'])->name('supplier.edit');
-    Route::put('supplierupdate/{id}', [PageController::class, 'supplierupdate'])->name('supplier.update');
-    Route::delete('supplierdestroy/{id}', [PageController::class, 'supplierdestroy'])->name('supplier.destroy');
+    Route::get('supplier', [SupplierController::class, 'index'])->name('supplier');
+    Route::post('supplierstore', [SupplierController::class, 'supplierstore'])->name('supplier.store');
+    Route::get('supplieredit/{id}', [SupplierController::class, 'supplieredit'])->name('supplier.edit');
+    Route::put('supplierupdate', [SupplierController::class, 'supplierupdate'])->name('supplier.update');
+    Route::delete('supplierdestroy', [SupplierController::class, 'supplierdestroy'])->name('supplier.destroy');
+    Route::get('api/suppliers', [ApiTableController::class, 'load_datatable_supplier'])->name('api.suppliers');
 
     // customer page
     Route::get('customer', [PageController::class, 'indexcustomer'])->name('customer');

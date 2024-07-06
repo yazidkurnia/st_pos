@@ -1,5 +1,7 @@
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+    <script src="{{ mix('js/app.js') }}"></script>
     <script src="../assets/vendor/libs/jquery/jquery.js"></script>
     <script src="../assets/vendor/libs/popper/popper.js"></script>
     <script src="../assets/vendor/js/bootstrap.js"></script>

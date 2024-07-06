@@ -11,11 +11,6 @@
 // Contoh: nama fungsi yang tidak baik (gunakan singkatan)
 // public function ctP() {}
 
-// Dokumentasi fungsi:
-// - Gunakan komentar PHPDoc untuk mendokumentasikan fungsi
-// - Sertakan deskripsi singkat tentang fungsi
-// - Sertakan informasi tentang nilai kembali dan parameter apa pun
-
 // Contoh: dokumentasi fungsi yang baik
 /**
  * Menghitung total harga produk.
@@ -24,46 +19,7 @@
  * @param int $quantity Jumlah produk
  * @return float Total harga produk
  */
-// public function calculateTotalPrice(float $price, int $quantity) {
-//     return $price * $quantity;
-// }
-
-// Badan fungsi:
-// - Pastikan badan fungsi singkat dan fokus pada satu tugas
-// - Hindari logika kompleks dan pertimbangkan memecahnya menjadi fungsi yang lebih kecil
-// - Gunakan nama variabel yang bermakna dan pertimbangkan menggunakan type hints
-
-// Contoh: badan fungsi yang baik
-// public function calculateTotalPrice(float $price, int $quantity) {
-//     $totalPrice = $price * $quantity;
-//     return $totalPrice;
-// }
-
-// Contoh: badan fungsi yang tidak baik (logika kompleks)
-// public function calculateTotalPrice(float $price, int $quantity) {
-//     if ($price > 100) {
-//         $discount = 0.1;
-//     } else {
-//         $discount = 0.05;
-//     }
-//     $totalPrice = $price * $quantity * (1 - $discount);
-//     return $totalPrice;
-// }
-
-// Contoh: badan fungsi yang lebih baik (memecah logika kompleks menjadi fungsi yang lebih kecil)
-// public function calculateTotalPrice(float $price, int $quantity) {
-//     $discount = getDiscount($price);
-//     $totalPrice = $price * $quantity * (1 - $discount);
-//     return $totalPrice;
-// }
-
-// public function getDiscount(float $price) {
-//     if ($price > 100) {
-//         return 0.1;
-//     } else {
-//         return 0.05;
-//     }
-// }
+// public function calculateTotalPrice(float $price, int $quantity)
 
 namespace App\Http\Controllers;
 
@@ -81,96 +37,6 @@ use Session;
 
 class PageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function indexsupplier()
-    {
-        $vendors = Vendor::select('*')->get();
-        return view('layouts.supplier.supplier_data', [
-            'vendors' => $vendors
-        ]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function supplierstore(Request $request)
-    {
-        $vendor = new Vendor();
-        $vendor->nama = $request->nama;
-        $vendor->telp = $request->telp;
-        $vendor->alamat = $request->alamat;
-        $vendor->save();
-
-        Session::flash('sukses', 'Data berhasil disimpan!');
-        return redirect(route('supplier'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Vendor  $vendor
-     * @return \Illuminate\Http\Response
-     */
-    public function supplieredit(Request $request)
-    {
-        $id = $request->id;
-        $vendor = Vendor::find($id);
-
-        return view('layouts.supplier.supplier_edit', [
-            'vendor' => $vendor
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Vendor  $vendor
-     * @return \Illuminate\Http\Response
-     */
-    public function supplierupdate(Request $request, $id)
-    {
-        $vendor = Vendor::find($id);
-        $vendor->nama = $request->nama;
-        $vendor->telp = $request->telp;
-        $vendor->alamat = $request->alamat;
-        $vendor->update();
-
-        Session::flash('sukses', 'Data berhasil diupdate!');
-        return redirect(route('supplier'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Vendor  $vendor
-     * @return \Illuminate\Http\Response
-     */
-    public function supplierdestroy(Request $request, $id)
-    {
-        $vendor = Vendor::findOrFail($id);
-        $vendor->delete();
-
-        Session::flash('sukses', 'Data berhasil dihapus!');
-        return redirect(route('supplier'));
-    }
-
-    public function indexcustomer()
-    {
-        $customer = Customer::select('*')->get();
-
-        return view('layouts.customer.customer_data', [
-            'customers' => $customer
-        ]);
-    }
-
     public function customerstore(Request $request)
     {
         $customer = new Customer();
