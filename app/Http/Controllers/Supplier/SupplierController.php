@@ -40,6 +40,7 @@ class SupplierController extends Controller
     {
         $vendors = Vendor::select('id', 'nama', 'alamat', 'telp')->get();
         $pageData['vendors'] = $vendors;
+        // dd($vendors);
         return view('layouts.supplier.index', $pageData);
     }
 
@@ -57,9 +58,7 @@ class SupplierController extends Controller
         $vendor->alamat = $request->alamat;
         $vendor->save();
     
-  
-            return response()->json(['success' => true, 'message' => 'Data berhasil disimpan!']);
-        
+        return response()->json(['success' => true, 'message' => 'Data berhasil disimpan!']);
     }
 
     /**

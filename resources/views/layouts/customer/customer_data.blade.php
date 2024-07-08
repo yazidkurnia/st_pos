@@ -15,7 +15,7 @@
                         @include('components.templates.message')
                         <div class="row mb-3 justify-content-end">
                             <div class="col-md-2">
-                                <button type="button" class="btn rounded btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+                                <button type="button" class="btn rounded btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addModal">
                                     <i class="bx bx-add-to-queue"></i> Tambah Data
                                 </button>
                             </div>

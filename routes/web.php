@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Supplier\SupplierController;
+use App\Http\Controllers\Membership\MembershipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,10 +32,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('api/suppliers', [ApiTableController::class, 'load_datatable_supplier'])->name('api.suppliers');
 
     // customer page
-    Route::get('customer', [PageController::class, 'indexcustomer'])->name('customer');
-    Route::post('customerstore', [PageController::class, 'customerstore'])->name('customer.store');
-    Route::put('customerupdate/{id}', [PageController::class, 'customerupdate'])->name('customer.update');
-    Route::delete('customerdestroy/{id}', [PageController::class, 'customerdestroy'])->name('customer.destroy');
+    Route::get('customer', [MembershipController::class, 'index'])->name('customer');
+    Route::get('customer/edit/{id}', [MembershipController::class, 'customer_edit'])->name('customer.edit');
+    Route::post('customerstore', [MembershipController::class, 'customerstore'])->name('customer.store');
+    Route::put('customerupdate', [MembershipController::class, 'customerupdate'])->name('customer.update');
+    Route::delete('customerdestroy', [MembershipController::class, 'customerdestroy'])->name('customer.destroy');
 
     // categories page
     Route::get('categories', [PageController::class, 'indexcategories'])->name('categories');
