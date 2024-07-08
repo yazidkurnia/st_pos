@@ -9,11 +9,11 @@ use App\Models\Categories;
 
 class CategoryController extends Controller
 {
-    public function indexcategories()
+    public function index()
     {
         $categories = Categories::select('*')->get();
 
-        return view('layouts.products.categories_data', [
+        return view('layouts.categories.index', [
             'categories' => $categories
         ]);
     }
@@ -25,6 +25,14 @@ class CategoryController extends Controller
         $categories->save();
 
         return response()->json(['success' => TRUE, 'message' => 'Berhasil menyimpan data']);
+    }
+
+    public function category_edit($id){
+
+        $validId = $id != '' ? is_int((int)Crypt::decryptString($id)) ? (int)Crypt::decryptString($id) : NULL : NULL;
+        $category = Categories::find($validId);
+        // dd($category);
+        return response()->json(['success' => TRUE, 'data' => $category, 'message' => 'Berhasil mengambil data']);
     }
 
     public function categoriesupdate(Request $request, $id)

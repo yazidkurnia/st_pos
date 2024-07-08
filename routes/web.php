@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Supplier\SupplierController;
 use App\Http\Controllers\Membership\MembershipController;
+use App\Http\Controllers\Category\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,10 +40,11 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('customerdestroy', [MembershipController::class, 'customerdestroy'])->name('customer.destroy');
 
     // categories page
-    Route::get('categories', [PageController::class, 'indexcategories'])->name('categories');
-    Route::post('categoriesstore', [PageController::class, 'categoriesstore'])->name('categories.store');
-    Route::put('categoriesupdate/{id}', [PageController::class, 'categoriesupdate'])->name('categories.update');
-    Route::delete('categoriesdestroy/{id}', [PageController::class, 'categoriesdestroy'])->name('categories.destroy');
+    Route::get('categories', [CategoryController::class, 'index'])->name('categories');
+    Route::post('categoriesstore', [CategoryController::class, 'categoriesstore'])->name('categories.store');
+    Route::get('categories/edit/{id}', [CategoryController::class, 'category_edit'])->name('categories.category_edit');
+    Route::put('categoriesupdate/{id}', [CategoryController::class, 'categoriesupdate'])->name('categories.update');
+    Route::delete('categoriesdestroy/{id}', [CategoryController::class, 'categoriesdestroy'])->name('categories.destroy');
 
     // units page
     Route::get('units', [PageController::class, 'indexunits'])->name('units');

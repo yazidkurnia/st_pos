@@ -232,7 +232,7 @@
             }
         }
 
-
+        // menjalankan controller ketika function berjalan
         function update(){
             $('#modalCenter').modal('hide');
                 loadIndicator();

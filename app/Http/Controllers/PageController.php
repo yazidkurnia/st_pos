@@ -53,8 +53,7 @@ class PageController extends Controller
         $categories->nama = $request->nama;
         $categories->save();
 
-        Session::flash('sukses', 'Data berhasil disimpan!');
-        return redirect(route('categories'));
+        return response()->json(['success' => TRUE, 'message' => 'Berhasil menyimpan data']);
     }
 
     public function categoriesupdate(Request $request, $id)
@@ -63,8 +62,7 @@ class PageController extends Controller
         $categories->nama = $request->nama;
         $categories->update();
 
-        Session::flash('sukses', 'Data berhasil diupdate!');
-        return redirect(route('categories'));
+        return response()->json(['success' => TRUE, 'message' => 'Berhasil merubah data']);
     }
 
     public function categoriesdestroy(Request $request, $id)
@@ -72,8 +70,7 @@ class PageController extends Controller
         $categories = Categories::findOrFail($id);
         $categories->delete();
 
-        Session::flash('sukses', 'Data berhasil dihapus!');
-        return redirect(route('categories'));
+        return response()->json(['success' => TRUE, 'message' => 'Berhasil menghapus data']);
     }
 
     public function indexunits()
