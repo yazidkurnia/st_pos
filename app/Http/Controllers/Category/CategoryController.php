@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
+use App\Models\Categories;
 
 class CategoryController extends Controller
 {
