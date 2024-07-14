@@ -39,6 +39,7 @@ class SupplierController extends Controller
     public function index()
     {
         $vendors = Vendor::select('id', 'nama', 'alamat', 'telp')->get();
+        $pageData['title']   = 'Supplier';
         $pageData['vendors'] = $vendors;
         // dd($vendors);
         return view('layouts.supplier.index', $pageData);
@@ -67,14 +68,20 @@ class SupplierController extends Controller
      * @param  \App\Models\Vendor  $vendor
      * @return \Illuminate\Http\Response
      */
-    public function supplieredit(Request $request)
+    public function supplieredit($id)
     {
-        $id = $request->id;
-        $vendor = Vendor::find($id);
-
-        return view('layouts.supplier.supplier_edit', [
-            'vendor' => $vendor
-        ]);
+        $validId = $id != '' ? is_int((int)Crypt::decryptString($id)) ? (int)Crypt::decryptString($id ): NULL : NULL;
+        // dd($validId);
+        /**
+         * @param validId [integer] : vendor id
+         */
+        $pageData = Vendor::find($validId);
+        // dd($pageData)
+        if(empty($pageData))
+        {
+            return response()->json(['error' => true, 'message' => 'Data tidak ditemukan', 'data' => 'empty']);
+        }
+        return response()->json(['success' => true, 'message' => 'valid', 'data' => $pageData, 'sc' => $id]);
     }
 
     /**
