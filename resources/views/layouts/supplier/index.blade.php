@@ -136,6 +136,26 @@
 
         console.log(nama);
 
+        function checkTime() {
+            var now = new Date();
+            console.log(now);
+            var formattedTime = now.toLocaleTimeString(); // Format the time
+            $('#currentTime').text(formattedTime); // Display the current time
+
+            // Your logic to check the time or perform actions
+            // Example: Check if it's a specific time
+            if (now.getHours() === 17 && now.getMinutes() === 30 && now.getSeconds() === 0) {
+                console.log('It\'s 5:30 PM!');
+                // Perform your action here
+            }
+
+            // Example: Check if it's the start of a new hour
+            if (now.getMinutes() === 0 && now.getSeconds() === 0) {
+                console.log('New hour has started!');
+                // Perform your action here
+            }
+        }
+
         function add(){
             toAction = 'save';
             console.log(toAction);
@@ -386,6 +406,8 @@
         // dom(document.ready fucntion) : digunakan untuk menjalankan fungsi javascript yang akan dipanggil secara berulang 
         // secara otomatis
         $(document).ready(function() {
+            console.log(Date());
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
