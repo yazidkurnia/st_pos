@@ -211,7 +211,7 @@
                                 resetForm();
                                 // Show success message
                                 Swal.fire({
-                                    position: "top-end",
+                                    position: "top-center",
                                     icon: "success",
                                     title: "Your work has been saved",
                                     showConfirmButton: false,
@@ -219,7 +219,7 @@
                                 });
                             } else {
                                 Swal.fire({
-                                    position: "top-end",
+                                    position: "top-center",
                                     icon: "error",
                                     title: "Error adding data",
                                     showConfirmButton: false,
@@ -229,7 +229,7 @@
                         },
                         error: function(data) {
                             Swal.fire({
-                                position: "top-end",
+                                position: "top-center",
                                 icon: "error",
                                 title: "Error adding data",
                                 showConfirmButton: false,
@@ -301,7 +301,7 @@
                                 resetForm();
                                 // Show success message
                                 Swal.fire({
-                                    position: "top-end",
+                                    position: "top-center",
                                     icon: "success",
                                     title: "Your work has been saved",
                                     showConfirmButton: false,
@@ -309,7 +309,7 @@
                                 });
                             } else {
                                 Swal.fire({
-                                    position: "top-end",
+                                    position: "top-center",
                                     icon: "error",
                                     title: "Error adding data",
                                     showConfirmButton: false,
@@ -319,7 +319,7 @@
                         },
                         error: function(data) {
                             Swal.fire({
-                                position: "top-end",
+                                position: "top-center",
                                 icon: "error",
                                 title: "Error adding data",
                                 showConfirmButton: false,
@@ -366,7 +366,7 @@
                                 resetForm();
                                 // Show success message
                                 Swal.fire({
-                                    position: "top-end",
+                                    position: "top-center",
                                     icon: "success",
                                     title: "Your work has been saved",
                                     showConfirmButton: false,
@@ -374,7 +374,7 @@
                                 });
                             } else {
                                 Swal.fire({
-                                    position: "top-end",
+                                    position: "top-center",
                                     icon: "error",
                                     title: "Error adding data",
                                     showConfirmButton: false,
@@ -384,7 +384,7 @@
                         },
                         error: function(data) {
                             Swal.fire({
-                                position: "top-end",
+                                position: "top-center",
                                 icon: "error",
                                 title: "Error adding data",
                                 showConfirmButton: false,
@@ -394,7 +394,7 @@
                     });
 
                 // Swal.fire({
-                //     position: "top-end",
+                //     position: "top-center",
                 //     icon: "success",
                 //     title: "Your work has been saved",
                 //     showConfirmButton: false,
