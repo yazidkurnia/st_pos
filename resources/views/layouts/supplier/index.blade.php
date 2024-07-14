@@ -43,12 +43,12 @@
                                         <td id="data_telp" data-telp="{{ $vendor->telp }}">{{ $vendor->telp }}</td>
                                         <td id="data_alamat" data-alamat="{{ $vendor->alamat }}">{{ $vendor->alamat }}</td>
                                         <td>
+                                            <button type="button" data-id="{{ $vendor->id }}" data-alamat="{{ $vendor->alamat }}" data-nama="{{ $vendor->nama }}" data-phone="{{ $vendor->telp }}" data-id="{{ $vendor->id }}" class="btn rounded-pill btn-icon btn-warning submit" onclick="edit('{{ $vendor->id }}')">
+                                                <i class='bx bx-edit'></i>
+                                            </button>
                                             {{-- <a href="{{ route('supplier.edit', $vendor->id ) }}" class="btn rounded-pill btn-icon btn-primary"><i class="tf-icons bx bx-edit"></i></a> --}}
                                             <button type="button" class="btn rounded-pill btn-icon btn-danger" onclick="confirm_delete('{{ $vendor->id }}')">
                                                 <i class='bx bx-trash'></i>
-                                            </button>
-                                            <button type="button" data-id="{{ $vendor->id }}" data-alamat="{{ $vendor->alamat }}" data-nama="{{ $vendor->nama }}" data-phone="{{ $vendor->telp }}" data-id="{{ $vendor->id }}" class="btn rounded-pill btn-icon btn-warning submit" onclick="edit()">
-                                                <i class='bx bx-edit'></i>
                                             </button>
                                         </td>
                                     </tr>
@@ -232,6 +232,35 @@
             }
         }
 
+                
+        function edit(id){ 
+            toAction = 'edit';
+            // console.log($('#btnEdit').data('id'));
+            resetForm();
+            $('#modalCenter').modal('show');
+            $('#modalCenterTitle').html('Edit Data');
+            $('#saveButton').html('Edit Data');
+        
+            $.ajax({
+                type: 'GET',
+                url: '{{ 'supplieredit' }}/' + id,
+                success: function(data){
+                    if (data) {
+                        console.log(data.message);
+                        $('#nama').val(data.data.nama);
+                        $('#telp').val(data.data.telp);
+                        $('#alamat').val(data.data.alamat);
+                        $('#id').val(data.data.id);
+                    }else{
+                        console.log(data);
+                    }
+                },
+                error: function(data){
+                    console.log(data.message)
+                }
+            })
+        }
+
         // menjalankan controller ketika function berjalan
         function update(){
             $('#modalCenter').modal('hide');
@@ -287,27 +316,6 @@
                     // Show success message
                 }, 2000); // 2000 milliseconds delay
            
-        }
-        
-        function edit(){
-
-            $('#modalCenterTitle').html('Edit Data');
-            $('#saveButton').html('Simpan perubahan')
-
-            var namaSupplier = $('.submit').data('nama');
-            var alamatSupplier = $('.submit').data('alamat');
-            var supplierPhone = $('.submit').data('phone');
-            var idSupplier = id;
-            toAction = 'edit';
-            $('#id').val($('.submit').data('id'));
-
-            console.log($('.submit').data('id'));
-
-            $('#modalCenter').modal('show');
-            $('#nama').val(namaSupplier);
-            $('#alamat').val(alamatSupplier);
-            $('#telp').val(supplierPhone);
-            // console.log(idSupplier);
         }
 
         function confirm_delete(supplierid)
