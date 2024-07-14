@@ -22,7 +22,9 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('dashboard', function() { return view('layouts.kasir.index'); })->name('dashboard');
+    Route::get('dashboard', function() { 
+        $pageData['title'] = 'Dashboard';
+        return view('layouts.kasir.index', $pageData); })->name('dashboard');
 
     // supplier page
     Route::get('supplier', [SupplierController::class, 'index'])->name('supplier');
