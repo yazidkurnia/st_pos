@@ -34,6 +34,7 @@ class MembershipController extends Controller
 {
     public function index()
     {
+        $pageData['title']     = 'Customer';
         $pageData['customers'] = Customer::select('*')->get();
         return view('layouts.customer.index', $pageData);
     }
