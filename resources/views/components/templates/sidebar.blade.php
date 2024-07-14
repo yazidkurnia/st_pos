@@ -68,7 +68,11 @@
 
     <ul class="menu-inner py-1">
       <!-- Dashboard -->
+      @if ($title == 'Dashboard')
       <li class="menu-item active">
+      @else
+      <li class="menu-item">
+      @endif
         <a href="{{ route('dashboard') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Analytics">Dashboard</div>
@@ -79,14 +83,24 @@
         <span class="menu-header-text">Pages</span>
       </li>
       <!-- Supplier -->
+      @if ($title == 'Supplier')
+      <li class="menu-item active">
+      @else
       <li class="menu-item">
+      @endif
+      
         <a href="{{ route('supplier') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bxs-truck"></i>
           <div data-i18n="Basic">Suppliers</div>
         </a>
       </li>
       <!-- Customer -->
+      @if ($title == 'Customer')
+      <li class="menu-item active">
+      @else
       <li class="menu-item">
+      @endif
+      {{-- <li class="menu-item"> --}}
         <a href="{{ route('customer') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-user"></i>
           <div data-i18n="Basic">Customer</div>
@@ -98,7 +112,12 @@
           <div data-i18n="Products">Products</div>
         </a>
         <ul class="menu-sub">
+          @if ($title == 'Categories')
+          <li class="menu-item active">
+          @else
           <li class="menu-item">
+          @endif
+          {{-- <li class="menu-item"> --}}
             <a href="{{ route('categories') }}" class="menu-link">
               <div data-i18n="Basic">Categories</div>
             </a>
