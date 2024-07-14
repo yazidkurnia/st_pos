@@ -12,10 +12,10 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Categories::select('*')->get();
+        $pageData['categories'] = $categories;
+        $pageData['title']      = 'Categories';
 
-        return view('layouts.categories.index', [
-            'categories' => $categories
-        ]);
+        return view('layouts.categories.index', $pageData);
     }
 
     public function categoriesstore(Request $request)
