@@ -5,6 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\Supplier\SupplierController;
 use App\Http\Controllers\Membership\MembershipController;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Casier\CasierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('dashboard', function() { 
-        $pageData['title'] = 'Dashboard';
-        return view('layouts.kasir.index', $pageData); })->name('dashboard');
+    Route::get('dashboard', [CasierController::class, 'index'])->name('dashboard');
 
     // supplier page
     Route::get('supplier', [SupplierController::class, 'index'])->name('supplier');
