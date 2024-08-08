@@ -88,9 +88,14 @@
       @else
       <li class="menu-item">
       @endif
+
+      <a href="{{ route('all.transaction') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-history"></i>
+        <div data-i18n="Basic">History Transaction</div>
+      </a>
       
         <a href="{{ route('supplier') }}" class="menu-link">
-          <i class="menu-icon tf-icons bx bxs-truck"></i>
+          <i class="menu-icon tf-icons bx bxs-package"></i>
           <div data-i18n="Basic">Suppliers</div>
         </a>
       </li>
