@@ -6,6 +6,7 @@ use App\Http\Controllers\Supplier\SupplierController;
 use App\Http\Controllers\Membership\MembershipController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Casier\CasierController;
+use App\Http\Controllers\Transaction\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('dashboard', [CasierController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [CasierController::class, 'index'])->name('dashboard');
 
     // supplier page
     Route::get('supplier', [SupplierController::class, 'index'])->name('supplier');
@@ -57,6 +58,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('items', [PageController::class, 'indexitems'])->name('items');
     Route::get('itemscreate', [PageController::class, 'itemscreate'])->name('items.create');
     Route::delete('itemsdestroy/{id}', [PageController::class, 'itemsdestroy'])->name('items.destroy');
+
+    // Route transaction
+    Route::post('/pay-order', [TransactionController::class, 'pay_order'])->name('pay.order');
 });
 
 // Route::get('/dashboard', function () {
