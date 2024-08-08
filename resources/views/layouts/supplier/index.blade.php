@@ -237,14 +237,8 @@
                             });
                         }
                     });
-    
-                    // Simulated successful save process (remove this in actual implementation)
-                    
-                    // Hide modal
-                    // $('#modalCenter').modal('hide');
                     resetForm();
-                    // Show success message
-                }, 2000); // 2000 milliseconds delay
+                }, 2000);
                 
             }else{
                 console.log(toAction);

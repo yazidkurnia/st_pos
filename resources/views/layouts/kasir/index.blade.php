@@ -1,7 +1,5 @@
 @extends('index')
 
-@extends('index')
-
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
@@ -62,7 +60,7 @@
       </div>
   </div>   
   
-<script>
+{{-- <script>
   let cartItems = [];
 
   function add_tochart(id){
@@ -82,23 +80,6 @@
     console.log(cartItems);
   }
 
-  $(document).on('click', '.add-item', function() {
-    let itemId = $(this).data('item-id');
-    let itemName = $(this).data('item-name');
-    let itemPrice = $(this).data('item-price');
-    let itemQuantity = 1;
-
-    let itemExists = cartItems.find(item => item.id === itemId);
-    if (itemExists) {
-      itemExists.quantity++;
-    } else {
-      cartItems.push({ id: itemId, name: itemName, price: itemPrice, quantity: itemQuantity });
-    }
-
-    updateCartList();
-    updateTotalPrice();
-  });
-
   function updateCartList() {
     $('#cart-list').html('');
     cartItems.forEach(item => {
@@ -113,6 +94,6 @@
     });
     $('#total-price').text(totalPrice.toLocaleString());
   }
-</script>
+</script> --}}
 
 @endsection
