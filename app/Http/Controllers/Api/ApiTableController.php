@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Vendor;
+use App\Models\Transaction;
+use App\Models\TransactionDetail;
 use DataTables;
 
 class ApiTableController extends Controller
@@ -22,5 +24,28 @@ class ApiTableController extends Controller
                 ->rawColumns(['actions'])
                 ->make(true);
         }
+    }
+
+    public function load_data_transaction(string $tipe = NULL)
+    {
+        $tableData = NULL;
+        if ($tipe ==NULL) {
+            # code...
+            $tableData = Transaction::paginate(10)->fragment('data');
+        }
+
+        $paginator = [
+            'total' => $tableData->total(),
+            'per_page' => $tableData->perPage(),
+            'current_page' => $tableData->currentPage(),
+            'last_page' => $tableData->lastPage(),
+        ];
+
+        return response()->json(['success' => true, 'message' => 'Data berhasil didapatkan', 'data' => $tableData->items(), 'paginator' => $paginator]);
+    }
+
+    public function load_data_transaction_detail(){
+        $tableData = TransactionDetail::paginate(10);
+        return response()->json(['success' => true, 'message' => 'Data berhasil didapatkan', 'data' => $tableData]);
     }
 }
