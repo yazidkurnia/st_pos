@@ -148,31 +148,31 @@
     }
 
     function renderCartItems() {
-    // hapus semua elemen yang ada di dalam chartList
-    chartList.innerHTML = '';
+        // hapus semua elemen yang ada di dalam chartList
+        chartList.innerHTML = '';
 
-    // loop data cartItems
-    cartItems.forEach((item) => {
-        // Sanitize and escape item.barang_id
-        const sanitizedBarangId = encodeURIComponent(item.barang_id);
+        // loop data cartItems
+        cartItems.forEach((item) => {
+            // Sanitize and escape item.barang_id
+            const sanitizedBarangId = encodeURIComponent(item.barang_id);
 
-        // buat elemen baru untuk setiap item
-        const itemElement = document.createElement('div');
-        itemElement.innerHTML = `
-        <div class="d-flex justify-content-between mb-3">
-            <span>${item.name}</span>
-            <div class="btn-group">
-                <button class="btn btn-sm btn-primary" onclick="updateQty('tambah', '${sanitizedBarangId}')">+</button>
-                <span class="mx-3">${item.jumlahbeli}</span>
-                <button class="btn btn-sm btn-danger" onclick="updateQty('kurang', '${sanitizedBarangId}')">-</button>
+            // buat elemen baru untuk setiap item
+            const itemElement = document.createElement('div');
+            itemElement.innerHTML = `
+            <div class="d-flex justify-content-between mb-3">
+                <span>${item.name}</span>
+                <div class="btn-group">
+                    <button class="btn btn-sm btn-primary" onclick="updateQty('tambah', '${sanitizedBarangId}')">+</button>
+                    <span class="mx-3">${item.jumlahbeli}</span>
+                    <button class="btn btn-sm btn-danger" onclick="updateQty('kurang', '${sanitizedBarangId}')">-</button>
+                </div>
             </div>
-        </div>
-        `;
+            `;
 
-        // tambahkan elemen baru ke dalam chartList
-        chartList.appendChild(itemElement);
-    });
-}
+            // tambahkan elemen baru ke dalam chartList
+            chartList.appendChild(itemElement);
+        });
+    }
 
 
     // menjalankan load indicator
@@ -207,6 +207,7 @@
                     success: function(data) {
                         if (data.success) {
                             console.log(data.data);
+                            cartItems = [];
                             Swal.fire({
                                 position: "top-center",
                                 icon: "success",
@@ -214,6 +215,8 @@
                                 showConfirmButton: false,
                                 timer: 1500
                             });
+                            renderCartItems();
+                            updateTotalPrice();
                         } else {
                             Swal.fire({
                                 position: "top-center",
