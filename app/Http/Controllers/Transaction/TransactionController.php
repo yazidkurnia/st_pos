@@ -58,5 +58,11 @@ class TransactionController extends Controller
     
         return response()->json(['success' => true, 'message' => 'Order Success', 'data' => $transactionIds]);
     }
+
+    public function get_all_transaction()
+    {
+        $pageData['title'] = 'Riwayat Transaksi';
+        return view('layouts.transactions.index', $pageData);
+    }
     
 }
