@@ -16,8 +16,6 @@
                       {{-- <span>{{ $item->id }}</span> --}}
                       <div class="card-body p-3">
                           <h5 class="card-title">{{ $item->nama_barang }}</h5>
-                          {{-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> --}}
-                          {{-- <a href="#" class="card-link">Card link</a> --}}
                           <div class="d-flex justify-content-between">
                               <button class="btn btn-primary btn-sm" id="btn_add_tochart" data-itemId="{{ $item->id }}" data-itemName="{{ $item->nama_barang }}" data-harga-jual="{{ $item->harga_jual }}" onclick="add_tochart('{{ $item->id }}', '{{ $item->nama_barang }}', '{{ $item->harga_jual }}', 1)">
                                   +
