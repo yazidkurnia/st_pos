@@ -7,6 +7,7 @@ use App\Http\Controllers\Membership\MembershipController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Casier\CasierController;
 use App\Http\Controllers\Transaction\TransactionController;
+use App\Http\Controllers\Api\ApiTableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,12 @@ Route::middleware(['auth'])->group(function(){
 
     // Route transaction
     Route::post('/pay-order', [TransactionController::class, 'pay_order'])->name('pay.order');
+
+    // Route history transaction
+    Route::get('/get/all-transaction/', [TransactionController::class, 'get_all_transaction'])->name('all.transaction');
+
+    // load data for datatable
+    Route::get('/get/data/transactio/api', [ApiTableController::class, 'load_data_transaction'])->name('load.data.transaction');
 });
 
 // Route::get('/dashboard', function () {
