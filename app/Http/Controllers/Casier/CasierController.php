@@ -17,12 +17,12 @@ class CasierController extends Controller
      */
     public function index()
     {
-        //* get data item
+        /// get data barang untuk ditampilkan pada halaman kasir
         $pageData['items'] = Items::select('barang.*')->get();
+        // dd($pageData['items']);
         
-        // var_dump($pageData['items']);
-        $pageData['title'] = 'Dashboard';
-        return view('layouts.kasir.index', $pageData);
+        $pageData['title'] = 'Dashboard';   /// judul pada halaman
+        return view('layouts.kasir.kasir_dashboard', $pageData);
     }
 
     /**
