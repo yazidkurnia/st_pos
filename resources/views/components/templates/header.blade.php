@@ -67,6 +67,10 @@
     {{-- <link rel="stylesheet" href="sweetalert2.min.css"> --}}
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.slim.js"
+            integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+            crossorigin="anonymous"></script>
   </head>
 
   <body>
