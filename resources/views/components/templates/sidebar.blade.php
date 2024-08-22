@@ -89,10 +89,7 @@
       <li class="menu-item">
       @endif
 
-      <a href="{{ route('all.transaction') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-history"></i>
-        <div data-i18n="Basic">History Transaction</div>
-      </a>
+
       
         <a href="{{ route('supplier') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bxs-package"></i>
@@ -146,8 +143,8 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="auth-login-basic.html" class="menu-link" target="_blank">
-              <div data-i18n="Basic">Sales</div>
+            <a href="{{ route('all.transaction') }}" class="menu-link">
+              <div data-i18n="Basic">History Transaction</div>
             </a>
           </li>
           <li class="menu-item">
