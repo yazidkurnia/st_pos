@@ -8,6 +8,7 @@ use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Casier\CasierController;
 use App\Http\Controllers\Transaction\TransactionController;
 use App\Http\Controllers\Api\ApiTableController;
+use App\Http\Controllers\TransactionDetail\TransactionDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,7 @@ Route::middleware(['auth'])->group(function(){
 
     // load data for datatable
     Route::get('/get/data/transactio/api', [ApiTableController::class, 'load_data_transaction'])->name('load.data.transaction');
+    Route::get('/detail/transaction/{id}', [TransactionDetailController::class, 'detail_transaction'])->name('view.detail.transaction');
 });
 
 // Route::get('/dashboard', function () {

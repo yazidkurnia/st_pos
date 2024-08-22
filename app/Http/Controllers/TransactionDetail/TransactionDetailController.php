@@ -15,7 +15,7 @@ class TransactionDetailController extends Controller
         $validId = (int)Crypt::decryptString($id);
         $pageData['data_detail_transaction'] = TransactionDetail::join('transactions', 'transactions.id', '=', 'transaction_details.transaction_id')
                                                ->join('barang', 'barang.id', '=', 'transaction_details.barang_id')
-                                               ->where('transaction_details.id', $validId)
+                                               ->where('transaction_details.transaction_id', $validId)
                                                ->get();
         
         $pageData['data_kasir'] = [];
@@ -23,6 +23,13 @@ class TransactionDetailController extends Controller
         if($pageData['data_detail_transaction']->isEmpty()){
             return redirect()->back()->with('error', 'Tidak ditemukan data transaksi, silahkan kontak admin');
         }
+
+        $pageData['totalbayar'] = NULL;
+        foreach ($pageData['data_detail_transaction'] as $list) {
+            $pageData['totalbayar'] += $list->hargaitemxqty;
+        }
+
+        // dd($pageData['totalbayar']);
         
         $pageData['data_kasir'] = User::find($pageData['data_detail_transaction'][0]->kasir_id);
         $pageData['title'] = 'Transaction Detail';

@@ -8,6 +8,7 @@ use App\Models\Vendor;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use DataTables;
+use Crypt;
 
 class ApiTableController extends Controller
 {
