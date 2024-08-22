@@ -31,7 +31,7 @@ class ApiTableController extends Controller
         $tableData = NULL;
         if ($tipe ==NULL) {
             # code...
-            $tableData = Transaction::paginate(10)->fragment('data');
+            $tableData = Transaction::with('user')->paginate(10)->fragment('data');
         }
 
         $paginator = [
